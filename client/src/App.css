@@ -1,0 +1,374 @@
+/* App.css */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+.app-header {
+  background: #2c3e50;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.status-indicator {
+  font-size: 1.2rem;
+}
+
+.status-indicator.connected {
+  color: #27ae60;
+}
+
+.status-indicator.disconnected {
+  color: #e74c3c;
+}
+
+.toggle-button, .reset-button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.toggle-button:hover, .reset-button:hover {
+  background: #2980b9;
+}
+
+.reset-button {
+  background: #e74c3c;
+}
+
+.reset-button:hover {
+  background: #c0392b;
+}
+
+/* Main Content */
+.app-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.app-main.with-dashboard {
+  flex-direction: row;
+}
+
+.app-main.map-only .map-section {
+  width: 100%;
+}
+
+.map-section {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.dashboard-section {
+  width: 400px;
+  background: #f8f9fa;
+  border-left: 1px solid #dee2e6;
+  overflow-y: auto;
+}
+
+/* Map Components */
+.map-container {
+  height: 100%;
+  position: relative;
+}
+
+.map-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 200px;
+}
+
+.legend h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.legend-line {
+  width: 20px;
+  height: 3px;
+}
+
+/* Polygon Drawing */
+.polygon-drawer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.draw-button, .finish-button, .cancel-button {
+  background: #4ecdc4;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.finish-button {
+  background: #27ae60;
+}
+
+.finish-button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  background: #e74c3c;
+}
+
+.drawing-controls p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Dashboard Styles */
+.dashboard {
+  padding: 1.5rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.dashboard h2 {
+  margin: 0 0 1.5rem 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-left: 4px solid #4ecdc4;
+}
+
+.stat-header h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0.5rem 0;
+}
+
+.stat-subtitle {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+}
+
+/* Charts */
+.charts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-panel {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chart-wrapper {
+  height: 200px;
+  position: relative;
+}
+
+/* Detailed Stats */
+.detailed-stats {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.detailed-stats h3 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+}
+
+.metrics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.metric:last-child {
+  border-bottom: none;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.metric-value {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Footer */
+.app-footer {
+  background: #34495e;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-top: 1px solid #2c3e50;
+}
+
+.footer-stats {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.9rem;
+}
+
+.footer-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Custom AUV Marker Styles */
+.auv-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-main.with-dashboard {
+    flex-direction: column;
+  }
+  
+  .dashboard-section {
+    width: 100%;
+    height: 40vh;
+  }
+  
+  .map-section {
+    height: 60vh;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .footer-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
