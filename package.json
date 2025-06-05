@@ -1,0 +1,18 @@
+{
+  "name": "auv-simulator-server",
+  "version": "1.0.0",
+  "description": "Simplified AUV swarm simulator server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.13.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
