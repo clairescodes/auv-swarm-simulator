@@ -146,5 +146,3 @@ class Auv {
     };
   }
 }
-
-module.exports = Auv;
