@@ -24,6 +24,7 @@ function App() {
 
   // WebSocket connection management
   const connectWebSocket = () => {
+  console.log('Attempting to connect to: wss://auv-swarm-simulator.onrender.com');
     try {
       const ws = new WebSocket('wss://auv-swarm-simulator.onrender.com');
       
