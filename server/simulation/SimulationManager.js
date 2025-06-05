@@ -1,4 +1,4 @@
-const Auv = require('./auv');
+const Auv = require('./Auv');
 
 class SimulationManager {
   constructor(numAuvs = 20) {
