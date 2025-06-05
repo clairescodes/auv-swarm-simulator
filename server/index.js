@@ -5,14 +5,16 @@ const SimulationManager = require('./simulation/SimulationManager');
 
 // Create Express app
 const app = express();
+const server = require('http').createServer(app);
+
 app.use(cors());
 app.use(express.json());
 
 // Create simulation manager
 const simulation = new SimulationManager(25); // Start with 25 AUVs
 
-// Create WebSocket server
-const wss = new WebSocket.Server({ port: 8080 });
+// Create WebSocket server using the same HTTP server
+const wss = new WebSocket.Server({ server });
 
 // Store connected clients
 const clients = new Set();
@@ -171,11 +173,13 @@ app.post('/api/reset', (req, res) => {
   }
 });
 
-// Start HTTP server
+// Use environment port (Render provides this) or fallback to 3001
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`HTTP server running on port ${PORT}`);
-  console.log(`WebSocket server running on port 8080`);
+
+// Start the server (both HTTP and WebSocket on same port)
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`WebSocket server running on same port`);
   console.log(`API endpoints available at http://localhost:${PORT}/api`);
 });
 
@@ -191,6 +195,6 @@ process.on('SIGINT', () => {
 });
 
 console.log('AUV Simulator Server Started');
-console.log('- HTTP API: http://localhost:3001');
-console.log('- WebSocket: ws://localhost:8080');
+console.log('- HTTP API: http://localhost:' + PORT);
+console.log('- WebSocket: ws://localhost:' + PORT);
 console.log('- Simulation running with', simulation.auvs.length, 'AUVs');
