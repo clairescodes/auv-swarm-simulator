@@ -25,7 +25,7 @@ function App() {
   // WebSocket connection management
   const connectWebSocket = () => {
     try {
-      const ws = new WebSocket('ws://localhost:8080');
+      const ws = new WebSocket('wss://auv-swarm-simulator.onrender.com');
       
       ws.onopen = () => {
         console.log('Connected to simulation server');
@@ -80,7 +80,7 @@ function App() {
   // Fetch analytics periodically
   const fetchAnalytics = async () => {
     try {
-      const response = await fetch('/api/analytics');
+      const response = await fetch('https://auv-swarm-simulator.onrender.com/api/analytics');
       if (response.ok) {
         const data = await response.json();
         setAnalytics(data);
@@ -115,7 +115,7 @@ function App() {
   // Handle mission creation
   const handleCreateMission = async (polygon) => {
     try {
-      const response = await fetch('/api/mission', {
+      const response = await fetch('https://auv-swarm-simulator.onrender.com/api/mission', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('/api/reset', {
+      const response = await fetch('https://auv-swarm-simulator.onrender.com/api/reset', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
