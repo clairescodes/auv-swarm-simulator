@@ -3,7 +3,7 @@ AUV Swarm Simulator
 A simplified real-time Autonomous Underwater Vehicle (AUV) swarm simulator with 2D visualization, mission planning, and analytics dashboard.
 
 Live Demo
-https://auv-swarm-simulator-xptbfuczn-claire-shins-projects.vercel.app/
+https://auv-swarm-simulator-clairescodes-claire-shins-projects.vercel.app
 
 Features
 - Real-time simulation of 20-30 AUVs with basic collision avoidance
